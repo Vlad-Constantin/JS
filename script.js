@@ -18,13 +18,28 @@ for(let i = 0; i < list_items.length; i++){
     // console.log('Lista nr '+ i);
 
     //each item
-    item.addEventListener('a', function(e){
-        console.log('aaa',e);
+    item.addEventListener('dragstart', function(){
+        console.log('dragstart');
         draggedItem = this;
+        // setTimeout(function(){
+        //     this.style.display='none';
+        // },0)
+        
     });
-
+    item.addEventListener('dragend', function(){
+        console.log('dragend');
+        setTimeout(function(){
+            draggedItem.style.display='block';
+            draggedItem=null;
+        })
+    })
     for(let j = 0; j < lists.length; j++){
         const list = lists[j];
+
+        list.addEventListener('drop',function(){
+            this.append(draggedItem);
+        });
+        
         // console.log('Nr item ' + j); 
     }
 }

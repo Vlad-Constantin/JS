@@ -35,9 +35,13 @@ for(let i = 0; i < list_items.length; i++){
     })
     for(let j = 0; j < lists.length; j++){
         const list = lists[j];
-
-        list.addEventListener('drop',function(){
+        list.addEventListener('dragover',function(e){
+            e.preventDefault();
+        });
+        list.addEventListener('drop',function(e){
+            console.log('drop');
             this.append(draggedItem);
+            
         });
         
         // console.log('Nr item ' + j); 
